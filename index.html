@@ -578,7 +578,7 @@
       <img src="./photo/icon.jpeg" alt="möln logo" class="loading-icon">
       <div class="loading-spinner-ring"></div>
     </div>
-    <div class="loading-logo">möln</div>
+    <div class="loading-logo">投げて笑って、mölnしよう</div>
     <div class="loading-text">
       読み込み中<span class="loading-dots"></span>
     </div>
@@ -705,7 +705,7 @@
     window.addEventListener('load', function() {
       const loadingScreen = document.getElementById('loadingScreen');
       
-      // 最低2秒間はローディング画面を表示
+      // 3秒間はローディング画面を表示
       setTimeout(function() {
         loadingScreen.classList.add('hidden');
         
@@ -713,7 +713,7 @@
         setTimeout(function() {
           loadingScreen.remove();
         }, 500);
-      }, 2000);
+      }, 3000);
     });
 
     // 画像の遅延読み込み完了を待つ
@@ -740,16 +740,8 @@
       
       function checkAllImagesLoaded() {
         if (loadedImages === images.length) {
-          // 全ての画像が読み込まれた後、少し待ってからローディングを終了
-          setTimeout(function() {
-            const loadingScreen = document.getElementById('loadingScreen');
-            if (loadingScreen) {
-              loadingScreen.classList.add('hidden');
-              setTimeout(function() {
-                loadingScreen.remove();
-              }, 500);
-            }
-          }, 1000);
+          // 全ての画像が読み込まれた後でも、3秒は表示し続ける
+          // 画像読み込み完了による早期終了は行わない
         }
       }
       
