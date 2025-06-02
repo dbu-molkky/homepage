@@ -184,6 +184,61 @@
       transform: translateX(5px);
     }
 
+    /* リンクボタンスタイル */
+    .link-button {
+      display: block;
+      position: relative;
+      padding: 1rem 2rem;
+      margin-bottom: 0.8rem;
+      background: linear-gradient(135deg, #4CAF50 0%, #2e7d32 100%);
+      color: white;
+      text-decoration: none;
+      border-radius: 15px;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 15px rgba(76, 175, 80, 0.3);
+      overflow: hidden;
+      font-weight: 500;
+      text-align: left;
+    }
+
+    .link-button::after {
+      content: none;
+    }
+
+    .link-button::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+      transition: left 0.5s;
+    }
+
+    .link-button:hover::before {
+      left: 100%;
+    }
+
+    .link-button:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 25px rgba(76, 175, 80, 0.4);
+      color: white;
+    }
+
+    .link-button .arrow {
+      position: absolute;
+      right: 1.5rem;
+      top: 50%;
+      transform: translateY(-50%);
+      font-size: 1.2rem;
+      transition: transform 0.3s ease;
+    }
+
+    .link-button:hover .arrow {
+      transform: translateY(-50%) translateX(5px);
+    }
+
     .gallery {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -459,11 +514,20 @@
       <section id="contact">
         <h2>お問い合わせ・SNS</h2>
         <p>ご質問・参加希望などは以下のSNSよりご連絡ください。</p>
-        <ul>
-          <li><a href="https://instagram.com/dbu_molkky" target="_blank">公式Instagramはこちら！</a></li>
-          <li><a href="https://twitter.com/dbu_molkky" target="_blank">公式Xはこちら</a></li>
-          <li><a href="https://line.me/R/ti/p/@413roggq" target="_blank">公式LINEはこちら！</a></li>
-        </ul>
+        <div>
+          <a class="link-button" href="https://instagram.com/dbu_molkky" target="_blank">
+            公式Instagramはこちら！
+            <span class="arrow">→</span>
+          </a>
+          <a class="link-button" href="https://twitter.com/dbu_molkky" target="_blank">
+            公式Xはこちら
+            <span class="arrow">→</span>
+          </a>
+          <a class="link-button" href="https://line.me/R/ti/p/@413roggq" target="_blank">
+            公式LINEはこちら！
+            <span class="arrow">→</span>
+          </a>
+        </div>
       </section>
 
       <div class="spacer"></div>
@@ -471,10 +535,16 @@
       <section id="links">
         <h2>その他リンク</h2>
         <p>このサークルに関連するその他のリンクはこちらです。</p>
-        <ul>
-          <li><a href="https://www.daito.ac.jp" target="_blank">大東文化大学ホームページ</a></li>
-          <li><a href="https://www.daito.ac.jp/campuslife/club/culture/details_43238.html" target="_blank">サークル紹介ページ</a></li>
-        </ul>
+        <div>
+          <a class="link-button" href="https://www.daito.ac.jp" target="_blank">
+            大東文化大学ホームページ
+            <span class="arrow">→</span>
+          </a>
+          <a class="link-button" href="https://www.daito.ac.jp/campuslife/club/culture/details_43238.html" target="_blank">
+            サークル紹介ページ
+            <span class="arrow">→</span>
+          </a>
+        </div>
       </section>
     </div>
 
