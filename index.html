@@ -319,6 +319,11 @@
       transform: translateX(5px);
     }
 
+    /* 隠されたアイテム */
+    .hidden-item {
+      display: none;
+    }
+
     /* リンクボタンスタイル */
     .link-button {
       display: block;
@@ -428,6 +433,18 @@
     .score-link:hover {
       transform: translateY(-2px);
       box-shadow: 0 8px 25px rgba(76, 175, 80, 0.4);
+    }
+
+    /* ボタンスタイル統一 */
+    button.score-link {
+      border: none;
+      cursor: pointer;
+      font-family: inherit;
+    }
+
+    button.score-link:focus {
+      outline: 2px solid rgba(76, 175, 80, 0.5);
+      outline-offset: 2px;
     }
 
     .link-container {
@@ -579,9 +596,6 @@
       <div class="loading-spinner-ring"></div>
     </div>
     <div class="loading-logo"> 投げて笑って、mölnしよう｡</div>
-
-
-    
   </div>
 
   <div class="main-container">
@@ -623,8 +637,8 @@
           <li>第７回幕張海浜公園Team Kiitosカップ 〜チーム戦〜</li>
           <li class="hidden-item">モルックビギナーズ大会 inちば</li>
         </ul>
-        <div class="show-more-container">
-          <button id="showMoreBtn" class="show-more-btn">もっと見る</button>
+        <div class="link-container">
+          <button class="score-link" id="showMoreBtn" onclick="toggleRecordList()">もっと見る</button>
         </div>
       </section>
 
@@ -702,8 +716,6 @@
       </section>
     </div>
 
-
-    
     <footer>
       <p>&copy; 大東文化大学公認サークル<br> モルックサークル「möln」</p>
     </footer>
@@ -757,6 +769,23 @@
       // 初期チェック
       checkAllImagesLoaded();
     });
+
+    // 大会・イベント実績の表示切り替え
+    function toggleRecordList() {
+      const hiddenItems = document.querySelectorAll('#recordList .hidden-item');
+      const showMoreBtn = document.getElementById('showMoreBtn');
+      const isHidden = hiddenItems[0].style.display === 'none' || hiddenItems[0].style.display === '';
+      
+      hiddenItems.forEach(function(item) {
+        if (isHidden) {
+          item.style.display = 'block';
+        } else {
+          item.style.display = 'none';
+        }
+      });
+      
+      showMoreBtn.textContent = isHidden ? '表示を減らす' : 'もっと見る';
+    }
   </script>
 </body>
 </html>
