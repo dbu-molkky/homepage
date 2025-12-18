@@ -5,9 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>モルックサークル「möln」</title>
   <link rel="icon" type="image/png" href="photo/favicon.ico" />
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;600;700;800&family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 
    <!-- PWA設定 -->
     <meta name="theme-color" content="#4CAF50" />
@@ -174,32 +171,81 @@
     }
 
     header {
-      background: linear-gradient(135deg, #66bb6a 0%, #43a047 50%, #2e7d32 100%);
+      background: linear-gradient(135deg, #4CAF50 0%, #2e7d32 100%);
       color: white;
-      padding: 3rem 2rem;
+      padding: 5rem 2rem 8rem 2rem;
       text-align: center;
-      box-shadow: 0 4px 20px rgba(76, 175, 80, 0.3);
+      position: relative;
+      overflow: hidden;
+      clip-path: ellipse(100% 100% at 50% 0%);
+      margin-bottom: -3rem;
+      border-radius: 0 0 50% 50%;
+    }
+
+    header::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: 
+        radial-gradient(circle at 30% 70%, rgba(255,255,255,0.15) 0%, transparent 40%),
+        radial-gradient(circle at 70% 30%, rgba(255,255,255,0.15) 0%, transparent 40%),
+        radial-gradient(circle at 50% 50%, rgba(255,255,255,0.1) 0%, transparent 60%);
+      animation: pulse 6s ease-in-out infinite alternate;
+    }
+
+    header::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: 
+        radial-gradient(circle at 20% 20%, rgba(255,255,255,0.08) 20%, transparent 20%),
+        radial-gradient(circle at 80% 80%, rgba(255,255,255,0.08) 15%, transparent 15%),
+        radial-gradient(circle at 40% 90%, rgba(255,255,255,0.08) 25%, transparent 25%);
+      background-size: 100px 100px, 80px 80px, 120px 120px;
+      animation: floatCircles 20s infinite linear;
+    }
+
+    @keyframes floatCircles {
+      0% { 
+        background-position: 0 0, 0 0, 0 0;
+        transform: rotate(0deg);
+      }
+      100% { 
+        background-position: 100px 100px, -80px -80px, 120px -120px;
+        transform: rotate(360deg);
+      }
+    }
+
+    @keyframes pulse {
+      0% { opacity: 0.5; }
+      100% { opacity: 1; }
     }
 
     header h1 {
-      font-family: 'Outfit', 'Noto Sans JP', sans-serif;
-      font-size: 2.8rem;
+      font-size: 3.5rem;
       font-weight: 700;
-      margin-bottom: 0.5rem;
-      letter-spacing: 0.05em;
-      text-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+      margin-bottom: 1rem;
+      text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+      position: relative;
+      z-index: 2;
     }
 
     header p {
-      font-family: 'Noto Sans JP', sans-serif;
-      font-size: 1.2rem;
+      font-size: 1.3rem;
       opacity: 0.95;
-      font-weight: 400;
-      letter-spacing: 0.08em;
+      position: relative;
+      z-index: 2;
+      font-weight: 300;
     }
 
     .container {
-      padding: 3rem 2rem;
+      padding: 6rem 2rem 3rem 2rem;
       max-width: 1000px;
       margin: auto;
     }
@@ -213,6 +259,11 @@
       transition: transform 0.3s ease, box-shadow 0.3s ease;
       position: relative;
       overflow: hidden;
+    }
+
+    @keyframes shimmer {
+      0%, 100% { background-position: -200% 0; }
+      50% { background-position: 200% 0; }
     }
 
     section:hover {
@@ -237,7 +288,7 @@
       transform: translateY(-50%);
       width: 4px;
       height: 100%;
-      background: linear-gradient(180deg, #66bb6a, #43a047, #2e7d32);
+      background: linear-gradient(180deg, #4CAF50, #2e7d32);
       border-radius: 2px;
     }
 
@@ -288,7 +339,7 @@
       position: relative;
       padding: 1rem 2rem;
       margin-bottom: 0.8rem;
-      background: linear-gradient(135deg, #66bb6a 0%, #43a047 50%, #2e7d32 100%);
+      background: linear-gradient(135deg, #4CAF50 0%, #2e7d32 100%);
       color: white;
       text-decoration: none;
       border-radius: 15px;
@@ -360,7 +411,7 @@
 
     .score-link {
       display: inline-block;
-      background: linear-gradient(135deg, #66bb6a 0%, #43a047 50%, #2e7d32 100%);
+      background: linear-gradient(135deg, #4CAF50 0%, #2e7d32 100%);
       color: white;
       padding: 1rem 2rem;
       font-size: 1rem;
@@ -411,20 +462,51 @@
     }
 
     footer {
-      background: linear-gradient(135deg, #43a047 0%, #2e7d32 50%, #1b5e20 100%);
+      background: linear-gradient(135deg, #2e7d32 0%, #1b5e20 100%);
       color: white;
       text-align: center;
-      padding: 2.5rem 2rem;
+      padding: 4rem 2rem 3rem 2rem;
       margin-top: 4rem;
-      box-shadow: 0 -4px 20px rgba(76, 175, 80, 0.3);
+      position: relative;
+      clip-path: ellipse(100% 100% at 50% 100%);
+      padding-top: 5rem;
+      border-radius: 50% 50% 0 0;
+      overflow: hidden;
+    }
+
+    footer::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: 
+        radial-gradient(circle at 30% 70%, rgba(255,255,255,0.15) 0%, transparent 40%),
+        radial-gradient(circle at 70% 30%, rgba(255,255,255,0.15) 0%, transparent 40%),
+        radial-gradient(circle at 50% 50%, rgba(255,255,255,0.1) 0%, transparent 60%);
+      animation: pulse 6s ease-in-out infinite alternate;
+    }
+
+    footer::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: 
+        radial-gradient(circle at 20% 20%, rgba(255,255,255,0.08) 20%, transparent 20%),
+        radial-gradient(circle at 80% 80%, rgba(255,255,255,0.08) 15%, transparent 15%),
+        radial-gradient(circle at 40% 90%, rgba(255,255,255,0.08) 25%, transparent 25%);
+      background-size: 100px 100px, 80px 80px, 120px 120px;
+      animation: floatCircles 20s infinite linear;
     }
 
     footer p {
-      font-family: 'Noto Sans JP', sans-serif;
+      position: relative;
+      z-index: 2;
       color: white;
-      margin: 0;
-      font-weight: 400;
-      letter-spacing: 0.05em;
     }
 
     a {
@@ -442,7 +524,7 @@
       height: 2px;
       bottom: -2px;
       left: 0;
-      background: linear-gradient(90deg, #66bb6a, #43a047, #2e7d32);
+      background: linear-gradient(90deg, #4CAF50, #2e7d32);
       transition: width 0.3s ease;
     }
 
@@ -451,7 +533,7 @@
     }
 
     a:hover {
-      color: #43a047;
+      color: #4CAF50;
     }
 
     .spacer {
@@ -477,19 +559,21 @@
     /* レスポンシブ対応 */
     @media (max-width: 768px) {
       header {
-        padding: 2rem 1rem;
+        padding: 3rem 1rem 6rem 1rem;
+        clip-path: ellipse(100% 80% at 50% 0%);
+        border-radius: 0 0 40% 40%;
       }
       
       header h1 {
-        font-size: 2rem;
+        font-size: 1.8rem;
       }
       
       header p {
-        font-size: 1rem;
+        font-size: 1.1rem;
       }
       
       .container {
-        padding: 2rem 1rem;
+        padding: 4rem 1rem 2rem 1rem;
       }
       
       section {
@@ -505,7 +589,10 @@
       }
       
       footer {
-        padding: 2rem 1rem;
+        padding: 3rem 1rem 2rem 1rem;
+        clip-path: ellipse(100% 80% at 50% 100%);
+        border-radius: 40% 40% 0 0;
+        padding-top: 4rem;
       }
 
       ::-webkit-scrollbar {
@@ -517,13 +604,14 @@
       }
 
       ::-webkit-scrollbar-thumb {
-       background: linear-gradient(135deg, #66bb6a, #43a047, #2e7d32);
+       background: linear-gradient(135deg, #4CAF50, #2e7d32);
        border-radius: 4px;
       }
 
       ::-webkit-scrollbar-thumb:hover {
-       background: linear-gradient(135deg, #43a047, #2e7d32, #1b5e20);
+       background: linear-gradient(135deg, #2e
       }
+
     }
   </style>
 </head>
@@ -551,6 +639,8 @@
           部員全員の仲が良く、常に和気あいあいとしているのも魅力の1つです。「運動はしたいけど激しいのは苦手だな…」そんな人にこそピッタリ！一緒にモルックを楽しみましょう！
         </p>
       </section>
+
+      
 
       <div class="spacer"></div>
 
@@ -602,9 +692,11 @@
         <div class="link-container">
           <a class="score-link" onclick="location.href='./contents/score.html'">得点計算ページへ</a>
         </div>
+        
       </section>
 
       <div class="spacer"></div>
+
 
       <section id="contact">
         <h2>お問い合わせ・SNS</h2>
@@ -648,7 +740,7 @@
     </div>
 
     <footer>
-      <p>モルックサークル「möln」</p>
+      <p>&copy; 大東文化大学公認サークル<br> モルックサークル「möln」</p>
     </footer>
   </div>
 
