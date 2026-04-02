@@ -798,11 +798,11 @@
   <!-- ローディング画面 -->
   <div class="loading-screen" id="loadingScreen">
     <div class="loading-skittles">
-      <div class="loading-skittle" data-num="1"></div>
       <div class="loading-skittle" data-num="2"></div>
-      <div class="loading-skittle" data-num="3"></div>
       <div class="loading-skittle" data-num="4"></div>
-      <div class="loading-skittle" data-num="5"></div>
+      <div class="loading-skittle" data-num="0"></div>
+      <div class="loading-skittle" data-num="4"></div>
+      <div class="loading-skittle" data-num="2"></div>
       <div class="loading-skittle" data-num="6"></div>
     </div>
     <div class="loading-logo">möln</div>
@@ -820,6 +820,7 @@
         <li><a href="#gallery">ギャラリー</a></li>
         <li><a href="#score">得点計算</a></li>
         <li><a href="#contact">SNS</a></li>
+        <li><a href="#join">加入について</a></li>
         <li><a href="#links">関連リンク</a></li>
       </ul>
     </div>
@@ -933,6 +934,26 @@
       </div>
     </section>
 
+
+
+
+    <!-- 加入について -->
+    <section id="join">
+      <div class="section-label">Join Us</div>
+      <h2>加入について</h2>
+      <p>モルックサークル「möln」加入希望の方はこちらから申請フォームにアクセスし、必要情報を入力してください！あいことばは練習会にてお伝えしていますので加入希望の方は公式Instagramでお知らせしている練習会にご参加ください！</p>
+      <div class="link-list">
+        <a class="btn btn-outline" href="https://forms.gle/GnccRBETsALkuQas9" target="_blank" onclick="event.preventDefault(); openJoinForm();">
+          加入申し込みフォームへ
+          <span class="btn-arrow">→</span>
+        </a>
+      </div>
+
+    </section>
+
+
+
+
     <!-- お問い合わせ・SNS -->
     <section id="contact">
       <div class="section-label">Contact</div>
@@ -953,6 +974,9 @@
         </a>
       </div>
     </section>
+
+
+
 
     <!-- 関連リンク -->
     <section id="links">
@@ -977,6 +1001,11 @@
 
   </div>
 
+
+
+
+
+
   <!-- フッター -->
   <footer>
     <div class="footer-pins">
@@ -997,7 +1026,76 @@
     <p class="footer-copy">&copy; 大東文化大学公認サークル</br>モルックサークル「möln」</p>
   </footer>
 
+
+
+
+  <!-- パスワードモーダル -->
+  <div id="joinModal" style="display:none; position:fixed; inset:0; z-index:1000; background:rgba(26,18,8,0.55); backdrop-filter:blur(4px); -webkit-backdrop-filter:blur(4px); align-items:center; justify-content:center;">
+    <div style="background:var(--chalk); border-radius:20px; padding:2.5rem 2rem; max-width:360px; width:90%; box-shadow:0 24px 60px rgba(26,18,8,0.25); position:relative; animation: fadeUp 0.3s ease;">
+      <button onclick="closeJoinModal()" style="position:absolute;top:1rem;right:1rem;background:none;border:none;font-size:1.3rem;cursor:pointer;color:var(--wood-light);line-height:1;">&#x2715;</button>
+      <div style="text-align:center; margin-bottom:1.5rem;">
+        <div style="font-family:'Playfair Display',serif; font-size:1.5rem; color:var(--wood-dark); margin-bottom:0.4rem;">möln</div>
+        <div style="font-size:0.8rem; letter-spacing:0.2em; text-transform:uppercase; color:var(--wood-light); font-weight:500;">あいことばを入力してください</div>
+      </div>
+      <div style="position:relative; margin-bottom:1rem;">
+        <input id="joinPassword" type="text" placeholder="あいことば"
+          style="width:100%; padding:0.85rem 1.1rem; border:1.5px solid rgba(107,68,35,0.2); border-radius:12px; font-size:1rem; font-family:'Noto Sans JP',sans-serif; background:white; color:var(--ink); outline:none; transition:border-color 0.25s;"
+          onfocus="this.style.borderColor='var(--wood-light)'"
+          onblur="this.style.borderColor='rgba(107,68,35,0.2)'"
+          onkeydown="if(event.key==='Enter') checkJoinPassword()" />
+      </div>
+      <div id="joinError" style="display:none; color:#c0392b; font-size:0.82rem; text-align:center; margin-bottom:0.8rem;">あいことばが正しくありません。</div>
+      <button onclick="checkJoinPassword()"
+        style="width:100%; padding:0.9rem; background:var(--forest); color:#fff; border:none; border-radius:12px; font-size:0.95rem; font-weight:500; font-family:'Noto Sans JP',sans-serif; cursor:pointer; transition:background 0.25s, transform 0.2s; letter-spacing:0.05em;"
+        onmouseover="this.style.background='var(--forest-light)'"
+        onmouseout="this.style.background='var(--forest)'">
+        フォームを開く
+      </button>
+    </div>
+  </div>
+
+
+
+
+
   <script>
+    // 加入フォーム：パスワード認証
+    const JOIN_PASSWORD = 'モルック最高'; // ← ここにパスワードを設定してください
+
+    function openJoinForm() {
+      const modal = document.getElementById('joinModal');
+      modal.style.display = 'flex';
+      document.getElementById('joinPassword').value = '';
+      document.getElementById('joinError').style.display = 'none';
+      setTimeout(function() { document.getElementById('joinPassword').focus(); }, 100);
+    }
+
+    function closeJoinModal() {
+      document.getElementById('joinModal').style.display = 'none';
+    }
+
+    function checkJoinPassword() {
+      const input = document.getElementById('joinPassword').value;
+      if (input === JOIN_PASSWORD) {
+        closeJoinModal();
+        const url = document.querySelector('#join a.btn-outline').href;
+        window.open(url, '_blank');
+      } else {
+        document.getElementById('joinError').style.display = 'block';
+        var pw = document.getElementById('joinPassword');
+        pw.style.borderColor = '#c0392b';
+        pw.value = '';
+        pw.focus();
+        setTimeout(function() { pw.style.borderColor = 'rgba(107,68,35,0.2)'; }, 1500);
+      }
+    }
+
+    // モーダル外クリックで閉じる
+    document.addEventListener('click', function(e) {
+      var modal = document.getElementById('joinModal');
+      if (modal && e.target === modal) closeJoinModal();
+    });
+
     // ナビリンクのスムーズスクロール
     document.querySelectorAll('a[href^="#"]').forEach(function(link) {
       link.addEventListener('click', function(e) {
