@@ -157,6 +157,252 @@
       50% { transform: rotate(var(--r, -12deg)) translateY(-8px); }
     }
 
+    /* ===== OPTION BUTTON (右上固定) ===== */
+    .option-btn {
+      position: fixed;
+      top: 1rem;
+      right: 1rem;
+      z-index: 500;
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      background: rgba(61,43,31,0.85);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      border: 1.5px solid rgba(200,146,90,0.4);
+      color: var(--birch);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.25);
+      transition: all 0.25s ease;
+      padding: 0;
+      overflow: visible;
+    }
+
+    .option-btn:hover {
+      background: rgba(107,68,35,0.95);
+      border-color: rgba(200,146,90,0.7);
+      box-shadow: 0 6px 20px rgba(0,0,0,0.35);
+      transform: scale(1.08);
+    }
+
+    .option-btn svg {
+      width: 20px;
+      height: 20px;
+      transition: transform 0.4s ease;
+    }
+
+    .option-btn.open svg {
+      transform: rotate(45deg);
+    }
+
+    /* ===== OPTION MODAL ===== */
+    .option-overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(26,18,8,0.45);
+      backdrop-filter: blur(3px);
+      -webkit-backdrop-filter: blur(3px);
+      z-index: 400;
+      animation: fadeOverlay 0.2s ease;
+    }
+
+    .option-overlay.open {
+      display: block;
+    }
+
+    @keyframes fadeOverlay {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    .option-panel {
+      position: fixed;
+      top: 4rem;
+      right: 1rem;
+      z-index: 450;
+      background: var(--chalk);
+      border-radius: 18px;
+      box-shadow: 0 12px 48px rgba(61,43,31,0.25), 0 2px 8px rgba(0,0,0,0.1);
+      border: 1px solid rgba(107,68,35,0.12);
+      padding: 1.5rem 1.6rem 1.6rem;
+      width: 280px;
+      transform-origin: top right;
+      animation: popIn 0.22s cubic-bezier(0.34,1.56,0.64,1);
+      display: none;
+    }
+
+    .option-panel.open {
+      display: block;
+    }
+
+    @keyframes popIn {
+      from { opacity: 0; transform: scale(0.85); }
+      to { opacity: 1; transform: scale(1); }
+    }
+
+    .option-panel-title {
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--wood-light);
+      margin-bottom: 1.1rem;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .option-panel-title::before {
+      content: '';
+      display: inline-block;
+      width: 3px;
+      height: 12px;
+      background: linear-gradient(180deg, var(--wood-light), var(--wood-mid));
+      border-radius: 2px;
+    }
+
+    .option-label {
+      font-size: 0.88rem;
+      font-weight: 500;
+      color: var(--ink-soft);
+      margin-bottom: 0.7rem;
+      display: block;
+    }
+
+    /* プリセットボタン群 */
+    .preset-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 0.4rem;
+      margin-bottom: 1.1rem;
+    }
+
+    .preset-btn {
+      padding: 0.5rem 0;
+      font-size: 0.9rem;
+      font-weight: 600;
+      font-family: 'Noto Sans JP', sans-serif;
+      border: 1.5px solid rgba(107,68,35,0.18);
+      border-radius: 10px;
+      background: white;
+      color: var(--wood-mid);
+      cursor: pointer;
+      transition: all 0.18s ease;
+      width: 100%;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .preset-btn::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, var(--wood-light), var(--wood-mid));
+      opacity: 0;
+      transition: opacity 0.18s ease;
+    }
+
+    .preset-btn span {
+      position: relative;
+      z-index: 1;
+    }
+
+    .preset-btn:hover {
+      border-color: var(--wood-light);
+      transform: translateY(-1px);
+      box-shadow: 0 3px 10px rgba(107,68,35,0.15);
+    }
+
+    .preset-btn:hover::before {
+      opacity: 0.08;
+    }
+
+    .preset-btn.active {
+      background: linear-gradient(135deg, var(--wood-light) 0%, var(--wood-mid) 100%);
+      border-color: transparent;
+      color: white;
+      box-shadow: 0 3px 12px rgba(107,68,35,0.3);
+    }
+
+    .preset-btn.active::before {
+      display: none;
+    }
+
+    /* カスタム入力 */
+    .custom-row {
+      display: flex;
+      gap: 0.5rem;
+      align-items: center;
+      margin-top: 0.5rem;
+    }
+
+    .option-input {
+      flex: 1;
+      padding: 0.55rem 0.8rem;
+      font-size: 0.95rem;
+      border: 1.5px solid rgba(107,68,35,0.2);
+      border-radius: 10px;
+      background: white;
+      color: var(--ink-soft);
+      font-family: 'Noto Sans JP', sans-serif;
+      transition: all 0.2s ease;
+      -moz-appearance: textfield;
+    }
+
+    .option-input::-webkit-inner-spin-button,
+    .option-input::-webkit-outer-spin-button {
+      -webkit-appearance: none;
+    }
+
+    .option-input:focus {
+      outline: none;
+      border-color: var(--wood-light);
+      box-shadow: 0 0 0 3px rgba(160,98,42,0.1);
+    }
+
+    .custom-apply-btn {
+      padding: 0.55rem 0.9rem;
+      font-size: 0.85rem;
+      font-weight: 600;
+      font-family: 'Noto Sans JP', sans-serif;
+      background: linear-gradient(135deg, var(--forest) 0%, var(--forest-light) 100%);
+      color: white;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      white-space: nowrap;
+      transition: all 0.2s ease;
+      box-shadow: 0 3px 10px rgba(45,90,39,0.2);
+    }
+
+    .custom-apply-btn:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 5px 14px rgba(45,90,39,0.3);
+    }
+
+    /* 現在の設定表示 */
+    .current-target-badge {
+      margin-top: 1.1rem;
+      padding: 0.55rem 0.9rem;
+      background: linear-gradient(135deg, var(--birch-light) 0%, var(--birch) 100%);
+      border: 1px solid var(--wood-pale);
+      border-radius: 10px;
+      text-align: center;
+      font-size: 0.82rem;
+      color: var(--wood-dark);
+      font-weight: 500;
+    }
+
+    .current-target-badge strong {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.1rem;
+      color: var(--wood-mid);
+    }
+
     /* ===== MAIN CONTAINER ===== */
     .container {
       padding: 5rem 2rem 4rem;
@@ -235,6 +481,26 @@
       text-align: center;
       transition: all 0.3s ease;
       font-family: 'Playfair Display', serif;
+    }
+
+    /* 満点表示バッジ */
+    .target-indicator {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      font-size: 0.78rem;
+      color: var(--wood-light);
+      font-weight: 500;
+      letter-spacing: 0.05em;
+      margin-top: 0.4rem;
+    }
+
+    .target-indicator-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--wood-pale);
     }
 
     .score-red {
@@ -525,6 +791,11 @@
         width: 100%;
         min-width: auto;
       }
+
+      .option-panel {
+        width: calc(100vw - 2rem);
+        right: 1rem;
+      }
     }
   </style>
 </head>
@@ -534,6 +805,37 @@
     <p style="margin: 0 0 0.5rem 0; font-weight: 600;">このアプリをホーム画面に追加しますか？</p>
     <button id="pwa-install-btn" style="background: #E8D5B7; color: #3D2B1F; border: none; padding: 0.5rem 1rem; border-radius: 6px; font-weight: 600; margin-right: 0.5rem; cursor: pointer;">インストール</button>
     <button id="pwa-dismiss-btn" style="background: transparent; color: #E8D5B7; border: 1px solid #E8D5B7; padding: 0.5rem 1rem; border-radius: 6px; font-weight: 600; cursor: pointer;">後で</button>
+  </div>
+
+  <!-- ⚙ オプションボタン（右上固定） -->
+  <button class="option-btn" id="optionToggleBtn" onclick="toggleOptionPanel()" title="オプション設定" aria-label="オプション設定">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <circle cx="12" cy="12" r="3"/>
+      <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/>
+    </svg>
+  </button>
+
+  <!-- オプションオーバーレイ -->
+  <div class="option-overlay" id="optionOverlay" onclick="closeOptionPanel()"></div>
+
+  <!-- オプションパネル -->
+  <div class="option-panel" id="optionPanel">
+    <div class="option-panel-title">オプション設定</div>
+    <span class="option-label">満点スコアを選択</span>
+    <div class="preset-grid">
+      <button class="preset-btn" id="preset-25" onclick="applyPreset(25)"><span>25</span></button>
+      <button class="preset-btn active" id="preset-50" onclick="applyPreset(50)"><span>50</span></button>
+      <button class="preset-btn" id="preset-75" onclick="applyPreset(75)"><span>75</span></button>
+      <button class="preset-btn" id="preset-100" onclick="applyPreset(100)"><span>100</span></button>
+    </div>
+    <span class="option-label">カスタム値</span>
+    <div class="custom-row">
+      <input type="number" id="customTargetInput" class="option-input" placeholder="例: 30" min="1" max="999">
+      <button class="custom-apply-btn" onclick="applyCustomTarget()">適用</button>
+    </div>
+    <div class="current-target-badge">
+      現在の満点：<strong id="currentTargetDisplay">50</strong> 点
+    </div>
   </div>
 
   <div class="main-container">
@@ -557,6 +859,14 @@
         <input type="text" id="name" value="möln Player" onchange="updateName()" placeholder="名前（チーム名）を入力">
         
         <div class="score-box" id="score">0 点</div>
+        
+
+
+
+
+
+
+
         
         <div class="turn-display">
           <p>ターン数：<span id="player-turn">0</span></p>
@@ -599,6 +909,8 @@
   </div>
 
   <script>
+    let targetScore = 50; // 満点（変更可能）
+
     let player = {
       name: "möln Player",
       score: 0,
@@ -640,12 +952,66 @@
       document.getElementById('pwa-install-banner').style.display = 'none';
     });
 
-    // データの永続化（LocalStorageの代わりにメモリに保存）
+    // ===== オプションパネル =====
+    function toggleOptionPanel() {
+      const panel = document.getElementById('optionPanel');
+      const overlay = document.getElementById('optionOverlay');
+      const btn = document.getElementById('optionToggleBtn');
+      const isOpen = panel.classList.contains('open');
+      if (isOpen) {
+        closeOptionPanel();
+      } else {
+        panel.classList.add('open');
+        overlay.classList.add('open');
+        btn.classList.add('open');
+      }
+    }
+
+    function closeOptionPanel() {
+      document.getElementById('optionPanel').classList.remove('open');
+      document.getElementById('optionOverlay').classList.remove('open');
+      document.getElementById('optionToggleBtn').classList.remove('open');
+    }
+
+    function applyPreset(value) {
+      setTargetScore(value);
+      // プリセットボタンのactive切り替え
+      document.querySelectorAll('.preset-btn').forEach(btn => btn.classList.remove('active'));
+      const target = document.getElementById('preset-' + value);
+      if (target) target.classList.add('active');
+    }
+
+    function applyCustomTarget() {
+      const val = parseInt(document.getElementById('customTargetInput').value, 10);
+      if (isNaN(val) || val < 1 || val > 999) {
+        alert('1〜999の範囲で入力してください。');
+        return;
+      }
+      // プリセットのactiveを外す
+      document.querySelectorAll('.preset-btn').forEach(btn => btn.classList.remove('active'));
+      // プリセット値と一致する場合はactiveに
+      const target = document.getElementById('preset-' + val);
+      if (target) target.classList.add('active');
+      setTargetScore(val);
+      document.getElementById('customTargetInput').value = '';
+    }
+
+    function setTargetScore(value) {
+      targetScore = value;
+      document.getElementById('currentTargetDisplay').textContent = value;
+      document.getElementById('targetScoreLabel').textContent = value;
+      // ゲームをリセット
+      resetGame();
+      saveGameState();
+    }
+
+    // ===== ゲームロジック =====
+
     function saveGameState() {
-      // ブラウザのlocalStorageが使用できない環境のためメモリに保存
       window.gameState = {
         player: { ...player },
-        history: [...history]
+        history: [...history],
+        targetScore: targetScore
       };
     }
 
@@ -653,6 +1019,15 @@
       if (window.gameState) {
         player = { ...window.gameState.player };
         history = [...window.gameState.history];
+        if (window.gameState.targetScore) {
+          targetScore = window.gameState.targetScore;
+          document.getElementById('currentTargetDisplay').textContent = targetScore;
+          document.getElementById('targetScoreLabel').textContent = targetScore;
+          // プリセットのactive更新
+          document.querySelectorAll('.preset-btn').forEach(btn => btn.classList.remove('active'));
+          const target = document.getElementById('preset-' + targetScore);
+          if (target) target.classList.add('active');
+        }
         updateDisplay();
       }
     }
@@ -661,12 +1036,13 @@
       document.getElementById("score").textContent = `${player.score} 点`;
       document.getElementById("player-turn").textContent = player.turn;
       document.getElementById("name").value = player.name;
+      document.getElementById("targetScoreLabel").textContent = targetScore;
       
       if (player.disqualified) {
         document.getElementById("status").textContent = "失格（0点3回）";
         document.getElementById("status").className = "disqualified";
         disableAddButton();
-      } else if (player.score === 50) {
+      } else if (player.score === targetScore) {
         document.getElementById("status").textContent = "あなたの勝ちです！";
         document.getElementById("status").className = "winner";
         document.getElementById("score").classList.add("score-red");
@@ -728,11 +1104,12 @@
         player.zeroCount = 0;
         player.score += scoreInput;
 
-        if (player.score > 50) {
-          player.score = 25;
+        // 満点を超えた場合は半分に戻す
+        if (player.score > targetScore) {
+          player.score = Math.floor(targetScore / 2);
         }
 
-        if (player.score === 50) {
+        if (player.score === targetScore) {
           document.getElementById("status").textContent = "あなたの勝ちです！";
           document.getElementById("status").className = "winner";
           document.getElementById("score").classList.add("score-red");
@@ -780,7 +1157,7 @@
       if (player.disqualified) {
         document.getElementById("status").textContent = "失格（0点3回）";
         document.getElementById("status").className = "disqualified";
-      } else if (player.score === 50) {
+      } else if (player.score === targetScore) {
         document.getElementById("status").textContent = "あなたの勝ちです！";
         document.getElementById("status").className = "winner";
         document.getElementById("score").classList.add("score-red");
@@ -824,6 +1201,10 @@
       if ((event.ctrlKey || event.metaKey) && event.key === 'z') {
         event.preventDefault();
         undoScore();
+      }
+      // Escでオプションパネルを閉じる
+      if (event.key === 'Escape') {
+        closeOptionPanel();
       }
     });
 
