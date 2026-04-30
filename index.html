@@ -421,6 +421,14 @@
 
     .schedule-text { grid-column: 1 / -1; }
 
+    /* ===== LOCATION SECTION ===== */
+    #location {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+      align-items: start;
+    }
+
 
     .location-card {
       background: white;
@@ -791,6 +799,7 @@
       .container { padding: 4rem 1.2rem 3rem; }
 
       #schedule { grid-template-columns: 1fr; }
+      #location { grid-template-columns: 1fr; }
       .schedule-text { grid-column: 1; }
 
       .sns-grid { grid-template-columns: 1fr; }
@@ -825,6 +834,7 @@
       <ul class="nav-links">
         <li><a href="#about">About</a></li>
         <li><a href="#schedule">Schedule</a></li>
+        <li><a href="#location">Location</a></li>
         <li><a href="#record">Record</a></li>
         <li><a href="#gallery">Gallery</a></li>
         <li><a href="#score">Score</a></li>
@@ -881,8 +891,18 @@
          <a class="btn btn-outline" href="./contents/calendar.html">年間活動カレンダー<span class="btn-arrow">→</span></a>
        </div>
       </div>
+    </section>
 
 
+
+
+    <!-- 活動場所について -->
+    <section id="location">
+      <div class="schedule-text">
+        <div class="section-label">Location</div>
+        <h2>活動場所について</h2>
+        <p>活動は板橋キャンパスと東松山キャンパスの両方で行っています。それぞれの活動場所をご確認ください。</p>
+      </div>
 
       <div class="location-card">
         <h3>板橋キャンパス<br><span class="location-sub">部室棟４階</span></h3>
