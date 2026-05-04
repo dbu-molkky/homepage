@@ -264,6 +264,22 @@
       font-style: italic;
     }
 
+    /* ===== NOTES ROW ===== */
+    .notes-row {
+      border-top: 2px solid rgba(107,68,35,0.2) !important;
+      background: rgba(200,146,90,0.06);
+    }
+    .notes-row:hover { background: rgba(200,146,90,0.1) !important; }
+    .td-notes-label {
+      background: linear-gradient(135deg, #e8dbc8 0%, #d9c9ae 100%) !important;
+      color: var(--wood-mid) !important;
+      font-size: 1rem !important;
+    }
+    .td-notes {
+      font-size: 0.85rem;
+      color: var(--ink-soft);
+    }
+
     /* ===== LEGEND ===== */
     .legend {
       display: flex; flex-wrap: wrap;
@@ -408,7 +424,8 @@
     // --- möln 全体イベント ---
     { month:4,  col:"all",              name:"新入生歓迎会（2，3，6，8，9，10）" },
     { month:8,  col:"all",              name:"BBQ交流会" },
-    { month:11, col:"all",              name:"大東祭" },
+    { month:10, col:"all",              name:"大東祭（31）" },
+    { month:11, col:"all",              name:"大東祭（1）" },
     { month:12, col:"all",              name:"TJUP会員校対抗モルック大会" },
     { month:3,  col:"all",              name:"４年生送別会" },
 
@@ -419,9 +436,40 @@
 
 
     // --- 板橋 ---
-    { month:5,  col:"itabashi",         name:"練習会" },
+    { month:10, col:"itabashi",         name:"大東祭（31）" },
+    { month:11, col:"itabashi",         name:"大東祭（1）" },
     
 
+
+
+  ];
+
+  // =========================================================
+  // 【備考の追加・編集方法】
+  //
+  //   下の notes 配列を編集してください。
+  //   書き方は events 配列と同じです。
+  //
+  //   col   : 列を文字列で指定
+  //             "all"              → möln 全体イベント
+  //             "higashimatsuyama" → 東松山
+  //             "itabashi"         → 板橋
+  //   name  : 備考の内容（表示される文字列）
+  //   ※ month の指定は不要です（備考欄は月に関係なく表示されます）
+  //
+  //   【記入例】
+  //   { col:"all", name:"詳細は別途連絡します" },
+  // =========================================================
+  const notes = [
+
+    // --- möln 全体イベント の備考 ---
+
+
+    // --- 東松山 の備考 ---
+
+
+    // --- 板橋 の備考 ---
+    { col:"itabashi",              name:"練習会については日程調整中です" },
 
 
   ];
@@ -467,6 +515,29 @@
       });
 
       tbody.appendChild(row);
+
+      // 3月（最終行）の後に備考行を追加
+      if (m === 3) {
+        const noteRow = document.createElement('tr');
+        noteRow.className = 'notes-row';
+
+        const tdNoteLabel = document.createElement('td');
+        tdNoteLabel.className = 'td-month td-notes-label';
+        tdNoteLabel.innerHTML = `備考<span class="month-sub">Others</span>`;
+        noteRow.appendChild(tdNoteLabel);
+
+        ['all', 'higashimatsuyama', 'itabashi'].forEach(col => {
+          const td = document.createElement('td');
+          td.className = 'td-notes';
+          const colNotes = notes.filter(n => n.col === col);
+          td.innerHTML = colNotes.length
+            ? colNotes.map(n => n.name).join('<br>')
+            : '<span class="cell-empty">—</span>';
+          noteRow.appendChild(td);
+        });
+
+        tbody.appendChild(noteRow);
+      }
     });
   }
 
