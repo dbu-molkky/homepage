@@ -139,14 +139,7 @@
       animation: fadeInUp 0.6s ease forwards;
       position: relative;
     }
-    .table-wrap::before {
-      content: '';
-      position: absolute; top: 0; left: 0;
-      width: 4px; height: 100%;
-      background: linear-gradient(180deg, var(--wood-light), var(--wood-mid));
-      border-radius: 4px 0 0 4px;
-      z-index: 2;
-    }
+
     @keyframes fadeInUp {
       from { opacity:0; transform:translateY(20px); }
       to   { opacity:1; transform:translateY(0); }
@@ -312,6 +305,44 @@
     .home-btn { background:var(--forest); color:white; box-shadow:0 4px 15px rgba(45,90,39,0.3); }
     .home-btn:hover { background:var(--forest-light); box-shadow:0 8px 25px rgba(45,90,39,0.4); }
 
+    /* ===== BACK BUTTON ===== */
+    .back-btn-wrap {
+      text-align: center;
+      margin-top: 2.5rem;
+    }
+
+    .back-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: var(--wood-dark);
+      color: var(--birch-light);
+      font-family: 'Noto Sans JP', sans-serif;
+      font-size: 0.9rem;
+      font-weight: 500;
+      padding: 0.75rem 1.8rem;
+      border-radius: 100px;
+      border: none;
+      cursor: pointer;
+      text-decoration: none;
+      box-shadow: 0 4px 16px rgba(61,43,31,0.35);
+      transition: all 0.25s ease;
+      white-space: nowrap;
+    }
+
+    .back-btn:hover {
+      background: var(--wood-mid);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(61,43,31,0.4);
+      color: var(--birch-light);
+    }
+
+    .back-btn svg {
+      width: 16px;
+      height: 16px;
+      flex-shrink: 0;
+    }
+
     /* ===== FOOTER ===== */
     footer {
       background: var(--wood-dark); color: var(--birch);
@@ -385,8 +416,14 @@
     </table>
   </div>
 
-  <div style="margin-top:2.5rem;">
-    <a href="../index.html" class="home-btn bottom-button">ホームページに戻る</a>
+  <!-- 前の画面に戻るボタン -->
+  <div class="back-btn-wrap">
+    <a class="back-btn" onclick="window.history.back(); return false;" href="#">
+      <svg viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M10 12L6 8L10 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+      前の画面に戻る
+    </a>
   </div>
 </div>
 
@@ -432,10 +469,9 @@
   const events = [
 
     // --- möln 全体イベント ---
-    { month:4,  col:"all",              name:"新入生歓迎会(2，3，6，8，9，10)" },
+    { month:4,  col:"all",              name:"新入生歓迎会（2，3，6，8，9，10）" },
     { month:8,  col:"all",              name:"BBQ交流会" },
-    { month:10, col:"all",              name:"大東祭(31)" },
-    { month:11, col:"all",              name:"大東祭(1)" },
+    { month:11, col:"all",              name:"大東祭" },
     { month:12, col:"all",              name:"TJUP会員校対抗モルック大会" },
     { month:3,  col:"all",              name:"４年生送別会" },
 
@@ -446,8 +482,7 @@
 
 
     // --- 板橋 ---
-    { month:10, col:"itabashi",         name:"大東祭(31)" },
-    { month:11, col:"itabashi",         name:"大東祭(1)" },
+    
     
 
 
