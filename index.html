@@ -716,6 +716,21 @@
       margin-top: 1.2rem;
     }
 
+    /* ===== NEWS SECTION ===== */
+    #news { }
+
+    .btn-label {
+      flex: 1;
+      min-width: 0;
+      overflow: hidden;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+    }
+
+    .news-hidden {
+      display: none;
+    }
+
     /* ===== FOOTER ===== */
     footer {
       background: var(--wood-dark);
@@ -833,10 +848,10 @@
       <a class="nav-brand" href="#">möln</a>
       <ul class="nav-links">
         <li><a href="#about">About</a></li>
+        <li><a href="#news">News</a></li>
         <li><a href="#schedule">Schedule</a></li>
         <li><a href="#location">Location</a></li>
         <li><a href="#record">Record</a></li>
-        <li><a href="#gallery">Gallery</a></li>
         <li><a href="#score">Score</a></li>
         <li><a href="#join">Join us</a></li>
         <li><a href="#contact">Contact</a></li>
@@ -875,6 +890,31 @@
         モルックサークル「möln」は2024年4月から活動始めたサークルで、フィンランドのスポーツ「モルック」を行っています。
         部員全員の仲が良く、常に和気あいあいとしているのも魅力の1つです。「運動はしたいけど激しいのは苦手だな…」そんな人にこそピッタリ！一緒にモルックを楽しみましょう！
       </p>
+    </section>
+
+
+
+
+
+    <!-- ニュース -->
+    <section id="news">
+      <div class="section-label">News</div>
+      <h2>ニュース</h2>
+
+      <div class="link-list" id="newsList">
+       <a class="btn btn-outline" href="./article/24.04.26.html"><span class="btn-label">2024.04.26　モルックサークル「möln」始まります</span><span class="btn-arrow">→</span></a>
+      </div>
+
+
+      <div class="link-list" id="newsExtra" style="display:none; margin-top:0.7rem;">
+       
+      </div>
+
+
+      <div class="btn-center">
+        <button class="btn-toggle" id="newsMoreBtn" onclick="toggleNewsList()">もっと見る</button>
+      </div>
+
     </section>
 
 
@@ -950,19 +990,6 @@
       </div>
     </section>
 
-
-
-
-
-    <!-- ギャラリー -->
-    <section id="gallery">
-      <div class="section-label">Gallery</div>
-      <h2>ギャラリー</h2>
-      <div class="gallery-grid">
-        <img src="./photo/IMG_0001.jpeg" alt="photo01" />
-        <img src="./photo/IMG_0002.jpeg" alt="photo02" />
-      </div>
-    </section>
 
 
 
@@ -1158,6 +1185,15 @@
 
     document.querySelectorAll('section').forEach(s => observer.observe(s));
 
+    // ニュース一覧の表示切り替え
+    function toggleNewsList() {
+      const extra = document.getElementById('newsExtra');
+      const btn = document.getElementById('newsMoreBtn');
+      const isHidden = extra.style.display === 'none' || extra.style.display === '';
+      extra.style.display = isHidden ? 'flex' : 'none';
+      btn.textContent = isHidden ? '表示を減らす' : 'もっと見る';
+    }
+
     // 大会・イベント実績の表示切り替え
     function toggleRecordList() {
       const hiddenItems = document.querySelectorAll('#recordList .hidden-item');
@@ -1176,6 +1212,8 @@
       document.querySelectorAll('#recordList .hidden-item').forEach(item => {
         item.style.display = 'none';
       });
+      const newsExtra = document.getElementById('newsExtra');
+      if (newsExtra) newsExtra.style.display = 'none';
     });
 
     // 画像の遅延読み込み完了を待つ
