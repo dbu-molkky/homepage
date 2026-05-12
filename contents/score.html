@@ -56,106 +56,6 @@
       min-height: 100vh;
     }
 
-    /* ===== HEADER ===== */
-    header {
-      background: var(--wood-dark);
-      position: relative;
-      overflow: hidden;
-      padding: 5rem 2rem 6rem;
-      text-align: center;
-    }
-
-    header::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background-image:
-        repeating-linear-gradient(
-          86deg,
-          transparent 0px, transparent 6px,
-          rgba(255,255,255,0.012) 6px, rgba(255,255,255,0.012) 7px
-        ),
-        repeating-linear-gradient(
-          90deg,
-          transparent 0px, transparent 18px,
-          rgba(0,0,0,0.06) 18px, rgba(0,0,0,0.06) 19px
-        );
-    }
-
-    header::after {
-      content: '';
-      position: absolute;
-      bottom: -60px;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 120%;
-      height: 120px;
-      background: var(--cream);
-      border-radius: 50% 50% 0 0;
-    }
-
-    .header-inner {
-      position: relative;
-      z-index: 2;
-    }
-
-    .header-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      background: rgba(255,255,255,0.08);
-      border: 1px solid rgba(255,255,255,0.15);
-      color: var(--birch);
-      font-size: 0.75rem;
-      letter-spacing: 0.25em;
-      text-transform: uppercase;
-      padding: 0.4rem 1.2rem;
-      border-radius: 100px;
-      margin-bottom: 2rem;
-      font-family: 'Noto Sans JP', sans-serif;
-      font-weight: 300;
-    }
-
-    header h1 {
-      font-family: 'Playfair Display', serif;
-      font-size: clamp(2.2rem, 7vw, 3.8rem);
-      font-weight: 700;
-      color: var(--birch-light);
-      letter-spacing: -0.02em;
-      line-height: 1.1;
-      margin-bottom: 1rem;
-      text-shadow: 0 4px 20px rgba(0,0,0,0.4);
-    }
-
-    header p {
-      font-family: 'Noto Sans JP', sans-serif;
-      font-size: 1.05rem;
-      color: rgba(232, 213, 183, 0.75);
-      font-weight: 300;
-      letter-spacing: 0.2em;
-      position: relative;
-      z-index: 2;
-    }
-
-    /* Floating skittle decorations in header */
-    .skittle-deco {
-      position: absolute;
-      border-radius: 6px 6px 4px 4px;
-      background: linear-gradient(180deg, rgba(200,146,90,0.15) 0%, rgba(107,68,35,0.2) 100%);
-      border: 1px solid rgba(200,146,90,0.12);
-      z-index: 1;
-    }
-
-    .skittle-deco:nth-child(1) { width: 18px; height: 52px; left: 8%; top: 20%; transform: rotate(-12deg); animation: floatPin 6s ease-in-out infinite; }
-    .skittle-deco:nth-child(2) { width: 14px; height: 42px; left: 15%; bottom: 30%; transform: rotate(8deg); animation: floatPin 7s ease-in-out 1s infinite; }
-    .skittle-deco:nth-child(3) { width: 20px; height: 58px; right: 10%; top: 15%; transform: rotate(15deg); animation: floatPin 5.5s ease-in-out 0.5s infinite; }
-    .skittle-deco:nth-child(4) { width: 15px; height: 44px; right: 18%; bottom: 35%; transform: rotate(-8deg); animation: floatPin 8s ease-in-out 2s infinite; }
-    .skittle-deco:nth-child(5) { width: 12px; height: 36px; left: 28%; top: 40%; transform: rotate(20deg); animation: floatPin 6.5s ease-in-out 1.5s infinite; }
-
-    @keyframes floatPin {
-      0%, 100% { transform: rotate(var(--r, -12deg)) translateY(0); }
-      50% { transform: rotate(var(--r, -12deg)) translateY(-8px); }
-    }
 
     /* ===== OPTION BUTTON (右上固定) ===== */
     .option-btn {
@@ -176,22 +76,18 @@
       justify-content: center;
       cursor: pointer;
       box-shadow: 0 4px 16px rgba(0,0,0,0.25);
-      transition: all 0.25s ease;
       padding: 0;
       overflow: visible;
+      transition: background 0.25s ease;
     }
 
     .option-btn:hover {
       background: rgba(107,68,35,0.95);
-      border-color: rgba(200,146,90,0.7);
-      box-shadow: 0 6px 20px rgba(0,0,0,0.35);
-      transform: scale(1.08);
     }
 
     .option-btn svg {
       width: 20px;
       height: 20px;
-      transition: transform 0.4s ease;
     }
 
     .option-btn.open svg {
@@ -537,6 +433,9 @@
       left: 100%;
     }
 
+    .option-btn::before { display: none; }
+    .option-btn:hover::before { display: none; }
+
     .button-group {
       display: flex;
       justify-content: center;
@@ -689,77 +588,6 @@
       50% { transform: translateY(-10px); }
     }
 
-    /* ===== FOOTER ===== */
-    footer {
-      background: var(--wood-dark);
-      color: var(--birch);
-      text-align: center;
-      padding: 4rem 2rem 3rem;
-      position: relative;
-      overflow: hidden;
-      margin-top: 4rem;
-    }
-
-    footer::before {
-      content: '';
-      position: absolute;
-      top: -40px;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 120%;
-      height: 80px;
-      background: var(--cream);
-      border-radius: 0 0 50% 50%;
-    }
-
-    footer::after {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background-image:
-        repeating-linear-gradient(
-          88deg,
-          transparent 0px, transparent 7px,
-          rgba(255,255,255,0.01) 7px, rgba(255,255,255,0.01) 8px
-        );
-    }
-
-    .footer-pins {
-      display: flex;
-      justify-content: center;
-      gap: 6px;
-      margin-bottom: 1.5rem;
-      position: relative;
-      z-index: 2;
-    }
-
-    .footer-pin {
-      width: 10px;
-      height: 30px;
-      background: linear-gradient(180deg, var(--birch) 0%, var(--wood-pale) 50%, var(--wood-mid) 100%);
-      border-radius: 4px 4px 3px 3px;
-      opacity: 0.6;
-    }
-
-    .footer-pin:nth-child(even) { height: 26px; opacity: 0.4; }
-
-    .footer-brand {
-      font-family: 'Playfair Display', serif;
-      font-size: 1.5rem;
-      color: var(--birch-light);
-      margin-bottom: 0.5rem;
-      position: relative;
-      z-index: 2;
-    }
-
-    footer p {
-      font-size: 0.8rem;
-      color: rgba(200,146,90,0.7);
-      font-weight: 300;
-      letter-spacing: 0.1em;
-      position: relative;
-      z-index: 2;
-    }
 
     /* ===== BACK BUTTON ===== */
     .back-btn-wrap {
@@ -806,7 +634,6 @@
 
     /* ===== RESPONSIVE ===== */
     @media (max-width: 768px) {
-      header { padding: 4rem 1.5rem 5rem; }
       .container { padding: 4rem 1.2rem 3rem; }
 
       .player-box { padding: 2rem 1.5rem; }
@@ -831,12 +658,6 @@
   </style>
 </head>
 <body>
-  <!-- PWAインストールボタン -->
-  <div id="pwa-install-banner" style="display: none; position: fixed; top: 0; left: 0; right: 0; background: var(--wood-dark, #3D2B1F); color: #E8D5B7; padding: 1rem; text-align: center; z-index: 1000; box-shadow: 0 2px 10px rgba(0,0,0,0.2);">
-    <p style="margin: 0 0 0.5rem 0; font-weight: 600;">このアプリをホーム画面に追加しますか？</p>
-    <button id="pwa-install-btn" style="background: #E8D5B7; color: #3D2B1F; border: none; padding: 0.5rem 1rem; border-radius: 6px; font-weight: 600; margin-right: 0.5rem; cursor: pointer;">インストール</button>
-    <button id="pwa-dismiss-btn" style="background: transparent; color: #E8D5B7; border: 1px solid #E8D5B7; padding: 0.5rem 1rem; border-radius: 6px; font-weight: 600; cursor: pointer;">後で</button>
-  </div>
 
   <!-- ⚙ オプションボタン（右上固定） -->
   <button class="option-btn" id="optionToggleBtn" onclick="toggleOptionPanel()" title="オプション設定" aria-label="オプション設定">
@@ -869,22 +690,8 @@
     </div>
   </div>
 
+
   <div class="main-container">
-    <header>
-      <!-- Skittle decorations -->
-      <div class="skittle-deco"></div>
-      <div class="skittle-deco"></div>
-      <div class="skittle-deco"></div>
-      <div class="skittle-deco"></div>
-      <div class="skittle-deco"></div>
-
-      <div class="header-inner">
-        <div class="header-badge">Score Tool</div>
-        <h1>möln Score tool</h1>
-        <p>投げて数えて、50を目指そう</p>
-      </div>
-    </header>
-
     <div class="container">
       <div class="player-box">
         <input type="text" id="name" value="möln Player" onchange="updateName()" placeholder="名前（チーム名）を入力">
@@ -912,7 +719,7 @@
           <button onclick="undoScore()" class="undo">戻る</button>
         </div>
 
-        <button onclick="resetGame()" class="reset bottom-button">ゲームリセット</button>
+        <button onclick="resetGame()" class="reset bottom-button">リセット</button>
       </div>
 
       <div class="back-btn-wrap">
@@ -926,24 +733,6 @@
 
     </div>
 
-    <footer>
-      <div class="footer-pins">
-        <div class="footer-pin"></div>
-        <div class="footer-pin"></div>
-        <div class="footer-pin"></div>
-        <div class="footer-pin"></div>
-        <div class="footer-pin"></div>
-        <div class="footer-pin"></div>
-        <div class="footer-pin"></div>
-        <div class="footer-pin"></div>
-        <div class="footer-pin"></div>
-        <div class="footer-pin"></div>
-        <div class="footer-pin"></div>
-        <div class="footer-pin"></div>
-      </div>
-      <div class="footer-brand">möln</div>
-      <p>&copy; 大東文化大学公認サークル<br> モルックサークル「möln」</p>
-    </footer>
   </div>
 
   <script>
@@ -969,26 +758,6 @@
         .catch(err => console.log('Service Worker registration failed'));
     }
 
-    // PWAインストールプロンプト
-    window.addEventListener('beforeinstallprompt', (e) => {
-      e.preventDefault();
-      deferredPrompt = e;
-      document.getElementById('pwa-install-banner').style.display = 'block';
-    });
-
-    document.getElementById('pwa-install-btn').addEventListener('click', async () => {
-      if (deferredPrompt) {
-        deferredPrompt.prompt();
-        const { outcome } = await deferredPrompt.userChoice;
-        console.log(`User response to the install prompt: ${outcome}`);
-        deferredPrompt = null;
-        document.getElementById('pwa-install-banner').style.display = 'none';
-      }
-    });
-
-    document.getElementById('pwa-dismiss-btn').addEventListener('click', () => {
-      document.getElementById('pwa-install-banner').style.display = 'none';
-    });
 
     // ===== オプションパネル =====
     function toggleOptionPanel() {
