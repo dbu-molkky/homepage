@@ -1,0 +1,185 @@
+:root {
+      --wood-dark: #3D2B1F;
+      --wood-mid: #6B4423;
+      --wood-light: #A0622A;
+      --wood-pale: #C8925A;
+      --birch-light: #F5ECD8;
+      --forest: #2D5A27;
+      --forest-light: #4A8C42;
+      --ink-soft: #3D2F1E;
+      --cream: #FAF5EC;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Noto Sans JP', sans-serif;
+      background: var(--cream);
+      color: var(--ink-soft);
+      line-height: 1.8;
+      overflow-x: hidden;
+    }
+
+    /* ===== NEWS IMAGE ===== */
+    .news-images {
+      display: flex;
+      gap: 1rem;
+      margin-top: 2rem;
+    }
+
+    .news-image-wrap {
+      flex: 1;
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 8px 24px rgba(61,43,31,0.12);
+    }
+
+    .news-image-wrap img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    /* ===== BACK BUTTON ===== */
+    .back-btn-wrap {
+      display: flex;
+      justify-content: center;
+      margin-top: 2.5rem;
+      padding-bottom: 0;
+    }
+
+    .back-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: var(--wood-dark);
+      color: var(--birch-light);
+      font-family: 'Noto Sans JP', sans-serif;
+      font-size: 0.9rem;
+      font-weight: 500;
+      padding: 0.75rem 1.8rem;
+      border-radius: 100px;
+      border: none;
+      cursor: pointer;
+      text-decoration: none;
+      box-shadow: 0 4px 16px rgba(61,43,31,0.35);
+      transition: all 0.25s ease;
+      white-space: nowrap;
+    }
+
+    .back-btn:hover {
+      background: var(--wood-mid);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(61,43,31,0.4);
+      color: var(--birch-light);
+    }
+
+    .back-btn svg {
+      width: 16px;
+      height: 16px;
+      flex-shrink: 0;
+    }
+
+    /* ===== NEWS SECTION ===== */
+    .news-meta {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin-bottom: 1.5rem;
+      flex-wrap: wrap;
+    }
+
+    .news-date {
+      font-size: 0.8rem;
+      color: var(--wood-light);
+      letter-spacing: 0.1em;
+      font-weight: 400;
+    }
+
+    .news-body {
+      border-top: 1px solid rgba(107,68,35,0.12);
+      padding-top: 1.5rem;
+    }
+
+    .news-body p {
+      margin-bottom: 1rem;
+      font-family: 'Noto Sans JP', sans-serif;
+      font-size: 1rem;
+      color: #5A4A38;
+      line-height: 1.9;
+      font-weight: 300;
+    }
+
+    /* ===== MAIN CONTAINER ===== */
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 5rem 2rem 1.5rem;
+    }
+
+    /* ===== SECTION ===== */
+    section {
+      margin-bottom: 1.5rem;
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+      scroll-margin-top: 70px;
+    }
+
+    section.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .section-label {
+      display: block;
+      font-size: 0.7rem;
+      font-weight: 500;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--wood-light);
+      margin-bottom: 0.75rem;
+    }
+
+    .section-label::before {
+      content: '';
+      display: block;
+      width: 24px;
+      height: 1px;
+      background: var(--wood-light);
+      margin-bottom: 0.5rem;
+    }
+
+    h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.8rem, 4vw, 2.4rem);
+      font-weight: 700;
+      color: var(--wood-dark);
+      line-height: 1.25;
+      margin-bottom: 1.5rem;
+    }
+
+    p {
+      font-size: 1rem;
+      color: #5A4A38;
+      line-height: 1.9;
+      margin-bottom: 1.2rem;
+      font-weight: 300;
+    }
+
+    /* ===== SCROLLBAR ===== */
+    ::-webkit-scrollbar { width: 6px; }
+    ::-webkit-scrollbar-track { background: #ffffff; }
+    ::-webkit-scrollbar-thumb { background: var(--wood-pale); border-radius: 3px; }
+
+    /* ===== RESPONSIVE ===== */
+    @media (max-width: 680px) {
+      .container { padding: 4rem 1.2rem 1.5rem; }
+      .news-images { flex-direction: column; }
+    }
