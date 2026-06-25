@@ -703,6 +703,8 @@
       cursor: pointer;
       font-family: 'Noto Sans JP', sans-serif;
       transition: all 0.25s;
+      text-decoration: none;
+      display: inline-block;
     }
 
     .btn-toggle:hover {
@@ -900,6 +902,7 @@
     <section id="news">
       <div class="section-label">News</div>
       <h2>ニュース</h2>
+      <p>mölnに関するお知らせをまとめています！新着３件はこちらから直接ご覧ください！過去のお知らせはもっと見るボタンからご覧ください！</p>
 
       <div class="link-list" id="newsList">
        <a class="btn btn-outline" href="./article/26.05.20.html"><span class="btn-label">2026.05.20　新入生体験会を開催しました</span><span class="btn-arrow">→</span></a>
@@ -907,15 +910,8 @@
        <a class="btn btn-outline" href="./article/25.11.02.html"><span class="btn-label">2025.11.02　第101回大東祭に出展しました</span><span class="btn-arrow">→</span></a>
       </div>
 
-
-      <div class="link-list" id="newsExtra" style="display:none; margin-top:0.7rem;">
-       <a class="btn btn-outline" href="./article/25.08.17.html"><span class="btn-label">2025.08.17　夏の練習会を開催しました</span><span class="btn-arrow">→</span></a>
-       <a class="btn btn-outline" href="./article/24.04.26.html"><span class="btn-label">2024.04.26モルックサークル「möln」始まります</span><span class="btn-arrow">→</span></a>
-      </div>
-
-
       <div class="btn-center">
-        <button class="btn-toggle" id="newsMoreBtn" onclick="toggleNewsList()">もっと見る</button>
+        <a class="btn-toggle" id="newsMoreBtn" href="./article/article_all.html">もっと見る</a>
       </div>
 
     </section>
