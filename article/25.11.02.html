@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>モルックサークル「möln」</title>
+  <link rel="stylesheet" href="./article.css">
+  <link rel="icon" type="image/png" href="photo/favicon.ico" />
+
+  <!-- PWA設定 -->
+  <meta name="theme-color" content="#5C3D2E" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+  <meta name="apple-mobile-web-app-title" content="möln" />
+  <link rel="apple-touch-icon" href="photo/App_icon.jpeg" />
+  <link rel="manifest" href="manifest.json" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,400&family=Noto+Sans+JP:wght@300;400;500;700&display=swap" rel="stylesheet">
+
+</head>
+<body>
+
+  <div class="container">
+    <!-- ニュース -->
+    <section id="news">
+      <div class="section-label">News</div>
+      <h2>第101回大東祭に出展しました</h2>
+      <div class="news-meta">
+        <span class="news-date">2025年11月1日、2日</span>
+      </div>
+      <div class="news-body">
+        <p>
+         11月1日、2日に大東文化大学板橋キャンパスで開催された第101回大東祭に出展しました！</br></br>
+         昨年に引き続き、実際にモルックの試合を体験できる試合ブースと、初めてモルックに触れる方でも気軽に楽しめる初心者向けのストラックアウトブースを展開し、多くの来場者の皆さんにモルックの魅力を体験していただきました。</br></br>
+         試合ブースでは、ルール説明から実際の対戦までを通して、戦略性とコミュニケーションの楽しさを感じてもらえる機会となりました。友人同士や家族連れで参加される方も多く、白熱した試合が各所で繰り広げられ、会場は大いに盛り上がりました。</br></br>
+         また、ストラックアウトブースでは、モルックが初めてという方や小さなお子さまでも気軽に挑戦できるよう工夫を施しました。的を狙ってモルックを投げるシンプルな内容ながら、多くの方が何度も挑戦し、成功した際には大きな歓声や笑顔が見られました。</br></br>
+         2日間を通して、幅広い世代の方々にご参加いただき、モルックを身近なスポーツとして知っていただく貴重な機会となりました。参加してくださった皆さま、そして運営にご協力いただいた皆さまに心より感謝申し上げます。</br></br>
+         今後もmölnでは、モルックの楽しさや魅力をより多くの方へ届けられるよう、学内外での活動を積極的に行ってまいります。引き続き、応援のほどよろしくお願いいたします。
+        </p>
+      </div>
+
+      <div class="news-images">
+        <div class="news-image-wrap">
+          <img src="photo/25.11.02_0001.jpeg" alt="0001" />
+        </div>
+
+        <div class="news-image-wrap">
+          <img src="photo/25.11.02_0002.jpeg" alt="0002" />
+        </div>
+
+
+      </div>
+
+      <!-- 前の画面に戻るボタン -->
+      <div class="back-btn-wrap">
+        <a class="back-btn" onclick="history.back(); return false;" href="#">
+          <svg viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M10 12L6 8L10 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          前の画面に戻る
+        </a>
+      </div>
+    </section>
+  </div>
+
+  <script>
+    // スクロールアニメーション
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll('section').forEach(s => observer.observe(s));
+  </script>
+</body>
+</html>
