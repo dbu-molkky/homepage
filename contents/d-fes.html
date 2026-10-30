@@ -43,9 +43,9 @@
     .info-date {
       font-family: 'Playfair Display', 'Noto Sans JP', serif;
       font-size: 1.7rem; font-weight: 700;
-      color: var(--wood-dark);
+      color: var(--wood-dark); letter-spacing: -0.02em;
     }
-    .info-place { font-size: 0.9rem; color: var(--wood-pale); letter-spacing: 0.05em; }
+    .info-place { font-size: 0.85rem; font-weight: 300; color: var(--wood-pale); letter-spacing: 0.05em; }
 
     /* ===== 予約表 ===== */
     .table-wrap {
@@ -62,7 +62,8 @@
     thead tr { background: linear-gradient(135deg, var(--wood-dark) 0%, var(--wood-mid) 100%); }
     thead th {
       padding: 1.1rem 1rem;
-      font-size: 0.85rem; font-weight: 600;
+      font-family: 'Noto Sans JP', sans-serif;
+      font-size: 0.82rem; font-weight: 600;
       color: var(--birch-light);
       letter-spacing: 0.12em;
       text-align: center;
@@ -81,7 +82,8 @@
       padding: 0.3rem 1rem;
       vertical-align: middle;
       text-align: center;
-      font-size: 0.95rem;
+      font-size: 0.88rem;
+      line-height: 1.6;
       border-right: 1px solid rgba(107,68,35,0.08);
     }
     td:last-child { border-right: none; }
@@ -98,6 +100,7 @@
     /* 時間のセル */
     td.time {
       font-family: 'Playfair Display', 'Noto Sans JP', serif;
+      font-size: 1rem;
       font-weight: 700;
       color: var(--wood-dark);
       background: linear-gradient(135deg, var(--birch-light) 0%, var(--birch) 100%);
@@ -178,12 +181,12 @@
       <tbody>
         <tr>
           <td class="time" rowspan="2">10:30〜11:00</td>
-          <td class="team">チームアラビア語</td>
-          <td class="count">0</td>
+          <td class="team">チームＡ</td>
+          <td class="count">2</td>
         </tr>
         <tr>
-          <td class="team">möln板橋</td>
-          <td class="count">0</td>
+          <td class="team">チームＢ</td>
+          <td class="count">3</td>
         </tr>
       </tbody>
 
